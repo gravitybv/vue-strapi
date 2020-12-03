@@ -1,6 +1,6 @@
 {
   "name": "@gravitybv/vue-strapi",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A Strapi plugin for Vue.js",
   "private": false,
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "vue-cli-service lint"
   },
   "repository": "git+https://github.com/gravitybv/vue-strapi.git",
-  "main": ".dist/vue-strapi.common.js",
+  "main": "dist/vue-strapi.common.js",
   "files": [
     "dist/*"
   ],
