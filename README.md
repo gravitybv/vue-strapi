@@ -1,4 +1,4 @@
-# vue-hello-world-simple
+# Vue Strapi
 
 ## Project setup
 ```
