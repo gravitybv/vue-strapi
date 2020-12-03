@@ -1,0 +1,31 @@
+on:
+  push:
+    tags: v*.*.*
+
+jobs:
+  npm:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Publish tag to npm
+        if: contains(github.ref, 'tags')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://npm.pkg.github.com'
