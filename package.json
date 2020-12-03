@@ -1,6 +1,6 @@
 {
   "name": "@gravitybv/vue-strapi",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A Strapi plugin for Vue.js",
   "private": false,
   "scripts": {
