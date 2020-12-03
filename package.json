@@ -1,0 +1,56 @@
+{
+  "name": "vue-strapi",
+  "version": "0.1.0",
+  "description": "A Strapi plugin for Vue.js",
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "build-library": "vue-cli-service build --target lib --name vue-strapi ./src/plugins/strapi.js",
+    "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gravitybv/vue-strapi.git"
+  },
+  "main": ".dist/vue-strapi.common.js",
+  "files": [
+    "dist/*"
+  ],
+  "author": {
+    "name": "Gravity BV",
+    "email": "info@gravity.nl"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gravitybv/vue-strapi/issues"
+  },
+  "homepage": "https://github.com/gravitybv/vue-strapi#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
