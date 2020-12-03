@@ -30,7 +30,7 @@ jobs:
         run: npm run build-library
 
       - name: Publish tag to npm
-        run: npm publish
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
