@@ -1,10 +1,17 @@
+name: Build & Publish
+
+#on:
+#  push:
+#    tags: v*.*.*
+
 on:
   push:
-    tags: v*.*.*
+    branches:
+      - master
 
 jobs:
   npm:
-    runs-on: self-hosted
+    runs-on: [ self-hosted ]
 
     steps:
       - uses: actions/checkout@master
