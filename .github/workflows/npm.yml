@@ -29,3 +29,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           registry-url: 'https://npm.pkg.github.com'
+
+      - name: Publish tag to GPR
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
