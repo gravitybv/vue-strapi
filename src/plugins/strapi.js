@@ -174,7 +174,9 @@ class Strapi {
   }
 
   setAuthorizationToken(token) {
-    this.$http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    if (token) {
+      this.$http.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
   }
 
   clearAuthorizationToken() {
