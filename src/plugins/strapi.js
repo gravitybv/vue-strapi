@@ -27,26 +27,26 @@ class Strapi {
     Vue.set(this.state, "user", user);
   }
 
-  async register(input) {
+  async register(input, storageEngine = localStorage) {
     this.clearToken();
     const {
       data: { user, jwt }
     } = await this.$http.post("/auth/local/register", input);
 
-    this.setToken(jwt);
+    this.setToken(jwt, storageEngine);
     this.setUser(user);
 
     return { user, jwt };
   }
 
-  async login(input) {
+  async login(input, storageEngine = localStorage) {
     this.clearToken();
 
     const {
       data: { user, jwt }
     } = await this.$http.post("/auth/local", input);
 
-    this.setToken(jwt);
+    this.setToken(jwt, storageEngine);
     this.setUser(user);
 
     return { user, jwt };
@@ -163,13 +163,14 @@ class Strapi {
     return localStorage.getItem(TOKEN_KEY);
   }
 
-  setToken(token) {
+  setToken(token, storageEngine = localStorage) {
     this.setAuthorizationToken(token);
-    localStorage.setItem(TOKEN_KEY, token);
+    storageEngine.setItem(TOKEN_KEY, token);
   }
 
   clearToken() {
     this.clearAuthorizationToken();
+    sessionStorage.removeItem(TOKEN_KEY);
     localStorage.removeItem(TOKEN_KEY);
   }
 
