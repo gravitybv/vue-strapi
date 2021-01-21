@@ -160,7 +160,7 @@ class Strapi {
   }
 
   getToken() {
-    return localStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(TOKEN_KEY) || sessionStorage.getItem(TOKEN_KEY);
   }
 
   setToken(token) {
