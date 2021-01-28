@@ -109,14 +109,14 @@ class Strapi {
     this.user = user;
   }
 
-  async find(entity, searchParams) {
-    const { data } = await this.$http.get(`/${entity}`, { searchParams });
+  async find(entity, params) {
+    const { data } = await this.$http.get(`/${entity}`, { params });
 
     return data;
   }
 
-  async count(entity, searchParams) {
-    const { data } = await this.$http.get(`/${entity}/count`, { searchParams });
+  async count(entity, params) {
+    const { data } = await this.$http.get(`/${entity}/count`, { params });
 
     return data;
   }
