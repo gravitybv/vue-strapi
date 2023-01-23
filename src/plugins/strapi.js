@@ -10,8 +10,11 @@ const defaults = {
 
 class Strapi {
   constructor(options) {
+    this.cancelTokenSource = axios.CancelToken.source();
+
     const instance = axios.create({
-      baseURL: options.url || defaults.url
+      baseURL: options.url || defaults.url,
+      cancelToken: this.cancelTokenSource.token
     });
 
     this.state = Vue.observable({ user: null });
@@ -184,6 +187,10 @@ class Strapi {
     if (this.$http.defaults.headers && this.$http.defaults.headers.common) {
       delete this.$http.defaults.headers.common["Authorization"];
     }
+  }
+
+  cancelRequests() {
+    this.cancelTokenSource.cancel("Operation canceled by the user.");
   }
 }
 
