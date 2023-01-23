@@ -8,17 +8,19 @@ const defaults = {
   entities: []
 };
 
+const controller = new AbortController();
+
 class Strapi {
   constructor(options) {
-    this.cancelTokenSource = axios.CancelToken.source();
-
     const instance = axios.create({
       baseURL: options.url || defaults.url,
-      cancelToken: this.cancelTokenSource.token
+      signal: controller.signal
     });
 
     this.state = Vue.observable({ user: null });
     this.$http = instance;
+    this.controller = controller;
+
     this.setAuthorizationToken(this.getToken());
   }
 
@@ -190,7 +192,7 @@ class Strapi {
   }
 
   cancelRequests() {
-    this.cancelTokenSource.cancel("Operation canceled by the user.");
+    this.controller.abort();
   }
 }
 

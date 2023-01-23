@@ -1,6 +1,6 @@
 {
   "name": "@gravitybv/vue-strapi",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A Strapi plugin for Vue.js",
   "private": false,
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/gravitybv/vue-strapi#readme",
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^1.2.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
